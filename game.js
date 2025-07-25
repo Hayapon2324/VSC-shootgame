@@ -37,7 +37,7 @@ ctx.clearRect(0, 0, canvas.width, canvas.height);
 ctx.fillStyle = "white";
 ctx.font = "48px Arial";
 ctx.fillText("Shooting game", canvas. width / 2 - 150, canvas.height / 2)
-ctx.fillText("Pless 't' to start", canvas. width /2 -150, canvas.height / 2 + 50)
+ctx.fillText("Pless 'Enter' to next page", canvas. width /2 -250, canvas.height / 2 + 50)
 let isStop = true
 
 // キー押下イベントの設定
@@ -516,21 +516,44 @@ function calculateBulletVelocity(other,self){
     self.xSpeed = 3*(delta_x / distance);
     self.ySpeed = 3*(delta_y / distance);
 }
+
+function information(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+    ctx.font = "30px Arial";
+    ctx.fillText("'w','a','s','d' to move", canvas. width / 2 - 140, canvas.height / 2 - 90)
+    ctx.fillText("'space' to shot" , canvas. width /2 -140, canvas.height / 2 - 60)
+    ctx.fillText("'r' to retry", canvas.width / 2 - 140,canvas.height / 2 - 30)
+    ctx.fillText("'t' to stop", canvas.width / 2 - 140, canvas.height / 2)
+    ctx.fillText("'i' to information", canvas.width / 2 - 140, canvas.height / 2 + 30)
+    ctx.fillText("'x' tospecial move (invincible)", canvas.width / 2 - 140, canvas.height / 2 + 60)
+    ctx.fillText("'z' tospecial move (homing)", canvas.width / 2 - 140, canvas.height / 2 + 90)
+}
+
 window.addEventListener("keydown", (e) => {
     if (e.key === "i"){
         if (isStop == false){
             isStop = true
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "white";
-                ctx.font = "30px Arial";
-                ctx.fillText("'w','a','s','d' to move", canvas. width / 2 - 140, canvas.height / 2 - 90)
-                ctx.fillText("'space'to shot" , canvas. width /2 -140, canvas.height / 2 - 60)
-                ctx.fillText("'r'to retry", canvas.width / 2 - 140,canvas.height / 2 - 30)
-                ctx.fillText("'t'to stop", canvas.width / 2 - 140, canvas.height / 2)
-                ctx.fillText("'i'to information", canvas.width / 2 - 140, canvas.height / 2 + 30)
-                ctx.fillText("'x'to special move (invincible)", canvas.width / 2 - 140, canvas.height / 2 + 60)
-                ctx.fillText("'z'to special move (homing)", canvas.width / 2 - 140, canvas.height / 2 + 90)
-            }
+            information()
+        }
         else if(isStop == true)isStop = false
+    }
+})
+
+let page = 0
+
+window.addEventListener("keydown", (e) => {
+    if(e.key === "Enter"){
+        if(page == 0){
+            information()
+            ctx.fillStyle = "white";
+            ctx.font = "48px Arial"
+            ctx.fillText("'Enter' to start", canvas.width / 2 - 140, canvas.height / 2 + 150)
+            page = 1
+        }
+        else if(page == 1){
+            isStop = false
+            updateGame()
+        }
     }
 })
