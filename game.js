@@ -523,11 +523,13 @@ window.addEventListener("keydown", (e) => {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.fillStyle = "white";
                 ctx.font = "30px Arial";
-                ctx.fillText("'w','a','s','d' to move", canvas. width / 2 - 100, canvas.height / 2)
-                ctx.fillText("'space'to shot" , canvas. width /2 -100, canvas.height / 2 + 30)
-                ctx.fillText("'r'to retry", canvas.width / 2 - 100,canvas.height / 2 + 60)
-                ctx.fillText("'t'to stop", canvas.width / 2 - 100, canvas.height / 2 + 90)
-                ctx.fillText("'i'to information", canvas.width / 2 - 100, canvas.height / 2 + 120)
+                ctx.fillText("'w','a','s','d' to move", canvas. width / 2 - 140, canvas.height / 2 - 90)
+                ctx.fillText("'space'to shot" , canvas. width /2 -140, canvas.height / 2 - 60)
+                ctx.fillText("'r'to retry", canvas.width / 2 - 140,canvas.height / 2 - 30)
+                ctx.fillText("'t'to stop", canvas.width / 2 - 140, canvas.height / 2)
+                ctx.fillText("'i'to information", canvas.width / 2 - 140, canvas.height / 2 + 30)
+                ctx.fillText("'x'to special move (invincible)", canvas.width / 2 - 140, canvas.height / 2 + 60)
+                ctx.fillText("'z'to special move (homing)", canvas.width / 2 - 140, canvas.height / 2 + 90)
             }
         else if(isStop == true)isStop = false
     }
