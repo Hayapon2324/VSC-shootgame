@@ -94,7 +94,7 @@ let enemies = [];
 function spawnEnemy() {
     let randomEnemy = Math.random()
     if (!isStop && !isGameOver){
-        if (randomEnemy <= 0.7){
+        if (randomEnemy <= 0.6){
             let x = Math.random() * (canvas.width - 30); // ランダムなX位置
             let y = -50; // 画面外上部から出現
             enemies.push(
@@ -110,7 +110,7 @@ function spawnEnemy() {
                 }
             );
         }
-        else if (randomEnemy > 0.7 && randomEnemy <= 0.95){
+        else if (randomEnemy > 0.6 && randomEnemy <= 0.85){
             let x = Math.random() * (canvas.width - 30); // ランダムなX位置
             let y = -50; // 画面外上部から出現
             enemies.push(
@@ -127,7 +127,7 @@ function spawnEnemy() {
             );
 
         }
-        else if (randomEnemy > 0.95){
+        else if (randomEnemy > 0.85 && rondomEnemy <= 0.9){
             let x = Math.random() * (canvas.width - 30); // ランダムなX位置
             let y = -50; // 画面外上部から出現
             enemies.push(
@@ -141,6 +141,23 @@ function spawnEnemy() {
                     color: "purple",
                     type: "shot",
                     bulletInterval: 50,
+                }
+            );
+        }
+        else if (rondomEnemy > 0.9){
+            let x = Math.random() * (canvas.width - 30); // ランダムなX位置
+            let y = -50; // 画面外上部から出現
+            enemies.push(
+                {
+                    x,
+                    y,
+                    width: 50,
+                    height: 50,
+                    speed: 3,
+                    acceleration: 0.1,
+                    color: "D2E7E3",
+                    type: "gard",
+                    life: 2,
                 }
             );
         }
@@ -208,8 +225,12 @@ function checkCollisions() {
                         ) {
                             // 衝突したら弾丸と敵を削除
                             bullets.splice(bullets.indexOf(bullet), 1)
-                            enemies.splice(enemies.indexOf(enemy), 1);
-                            
+                            if(enemy.type == !gard || (enemy.type == gard && enemy.life == 1)){
+                                enemies.splice(enemies.indexOf(enemy), 1);
+                            }
+                            else if (enemy.type == gard && enemy.life == 2){
+                                enemy.life --
+                            }
                             // スコア加算
                             score += 10;
 
