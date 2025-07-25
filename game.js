@@ -225,10 +225,10 @@ function checkCollisions() {
                         ) {
                             // 衝突したら弾丸と敵を削除
                             bullets.splice(bullets.indexOf(bullet), 1)
-                            if(enemy.type == !gard || (enemy.type == gard && enemy.life == 1)){
+                            if(enemy.type != "gard" || (enemy.type == "gard" && enemy.life == 1)){
                                 enemies.splice(enemies.indexOf(enemy), 1);
                             }
-                            else if (enemy.type == gard && enemy.life == 2){
+                            else if (enemy.type == "gard" && enemy.life == 2){
                                 enemy.life --
                             }
                             // スコア加算
